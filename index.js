@@ -6,7 +6,7 @@ var pathIsAbsolute = require('path-is-absolute');
 var extend = require('safe-extend')
 
 module.exports = {
-    create: function (settings, watchPath) {
+    create: function (settings, watchDir) {
         var defaultSettings = {
             port: hashToPort(process.cwd()),
             delay: 100,
@@ -14,12 +14,12 @@ module.exports = {
         }
         settings = extend(true, defaultSettings, settings)
         var port = settings.port
-        if (!watchPath) {
+        if (!watchDir) {
             if (pathIsAbsolute(fis.config.data.options.d)) {
-                watchPath = fis.config.data.options.d
+                watchDir = fis.config.data.options.d
             }
             else {
-                watchPath = path.join(process.cwd(), fis.config.data.options.d)
+                watchDir = path.join(process.cwd(), fis.config.data.options.d)
             }
         }
         function portIsOccupied (port, callback) {
@@ -38,8 +38,8 @@ module.exports = {
             }
             else {
                 var lrserver = livereload.createServer(settings)
-                lrserver.watch(watchPath)
-                fis.log.info('Livereload: http://127.0.0.1:' + port + '\n\t' + watchPath)
+                lrserver.watch(watchDir)
+                fis.log.info('Livereload: http://127.0.0.1:' + port + '\n\t' + watchDir)
             }
         })
         return function (content, file) {
