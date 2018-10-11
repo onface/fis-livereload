@@ -1,0 +1,11 @@
+{
+   "name": "fis-livereload",
+   "version": "0.1.0",
+   "description": "因为 fis3 的 livereload 总是报错，所以自己实现 livereload。",
+   "dependencies": {
+      "hash-to-port": "^1.0.0",
+      "livereload": "^0.7.0",
+      "path-is-absolute": "^1.0.1",
+      "safe-extend": "^3.0.5"
+   }
+}
