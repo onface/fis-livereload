@@ -7,10 +7,12 @@ fis-livereload 使用最新的 [livereload](https://www.npmjs.com/package/livere
 ## 示例
 
 ```js
-var fisLivereload = require('fis-livereload').create()
-fis.media('dev').match('*.html', {
-    postprocessor: fisLivereload
-})
+if (fis.project.currentMedia() === 'dev') {
+    var fisLivereload = require('../index').create()
+    fis.match('*.html', {
+        postprocessor: fisLivereload
+    })
+}
 ```
 
 ```shell

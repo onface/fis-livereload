@@ -1,5 +1,6 @@
-var fisLivereload = require('../index').create()
-
-fis.media('dev').match('*.html', {
-    postprocessor: fisLivereload
-})
+if (fis.project.currentMedia() === 'dev') {
+    var fisLivereload = require('../index').create()
+    fis.match('*.html', {
+        postprocessor: fisLivereload
+    })
+}
